@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MetaMapa - Landing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav>
+    <div class="header-left">
+      <h2>MetaMapa</h2>
+      <div class="buttons">
+        <a href="hechos.html" class="btn">🗺️ Hechos</button>
+        <a href="acerca.html" class="btn">📃 Acerca De</a>
+      </div>
+    </div>
+    <button id="openModal" class="btn">👤 Login</button>
+  </nav>
+
+  <header>
+    <h1>MetaMapa</h1>
+    <p>Sistema de gestión de mapeos</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Propósito</h2>
+      <p>Aquí puedes describir el propósito principal de MetaMapa, sus beneficios y a quién está dirigido.</p>
+    </div>
+    <div class="card">
+      <h2>Objetivos</h2>
+      <p>Agrega los objetivos clave: qué problemas soluciona y qué valor aporta a los usuarios.</p>
+    </div>
+    <div class="card">
+      <h2>Ejemplos de colecciones</h2>
+      <p>Presenta ejemplos destacados de colecciones y hechos para que el visitante se interese en explorar más.</p>
+    </div>
+  </main>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">
+        <h2>Login</h2>
+      </div>
+      <form>
+        <label>Nombre de usuario</label>
+        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="Ingrese su contraseña">
+
+        <div class="radio-option">
+          <input type="radio" id="guest" name="modo">
+          <label for="guest">Continuar sin loguearme</label>
+        </div>
+
+        <button type="submit" class="next-btn">Siguiente ➜</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

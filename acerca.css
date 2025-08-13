@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #0b1116;
+    background:
+        radial-gradient(1200px 700px at -10% 70%, rgba(233, 205, 196, .28), transparent 60%),
+        radial-gradient(900px 600px at 35% -10%, rgba(197, 226, 232, .30), transparent 55%),
+        radial-gradient(700px 500px at 60% 40%, rgba(220, 232, 238, .45), transparent 60%),
+        radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    background: #f5f6f7;
+    border: 1px solid #d9dde2;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none; /* Quita el subrayado */
+    display: inline-block;/* Asegura que se comporte como botón */
+    color: inherit;/* Mantiene el mismo color del texto que el resto de los botones */
+}
+
+.btn:hover {
+    background: #ffffff;
+}
+
+/* CONTENIDO */
+.content {
+    max-width: 900px;
+    margin: 6rem auto 2rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* === MODAL DEL BOTON LOGIN === */
+.login-btn {
+    padding: 10px 20px;
+    background-color: #a388ee;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #8d6fe2;
+}
+
+/* Fondo oscuro al abrir modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Caja modal */
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    border-radius: 12px;
+    width: 300px;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Encabezado violeta */
+.modal-header {
+    background-color: #ece2ff;
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #9b80d6;
+}
+
+/* Botón cerrar */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+}
+
+/* Formulario */
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    outline: none;
+}
+
+.radio-option {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #777;
+}
+
+.next-btn {
+    background-color: #ddd;
+    color: #555;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.next-btn:hover {
+    background-color: #ccc;
+}

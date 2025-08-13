@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMapa</title>
+  <link rel="stylesheet" href="hechos.css">
+</head>
+
+<body>
+  <nav>
+    <div class="header">
+      <div class="header-left">
+        <h2>MetaMapa</h2>
+        <div class="buttons">
+          <button class="btn" onclick="location.href='index.html'">🏠 Inicio</button>
+          <button class="btn">☰ Filtrar</button>
+          <button class="btn">🔍 Buscar</button>
+          <button class="btn" onclick="location.href='acerca.html'">📃 Acerca De</button>
+        </div>
+       
+      </div>
+       <!-- Botón para abrir el modal -->
+        <button id="openModal" class="btn">👤 Login</button>
+    </div>
+  </nav>
+
+   <div class="grid">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">
+        <h2>Login</h2>
+      </div>
+      <form>
+        <label>Nombre de usuario</label>
+        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="Ingrese su contraseña">
+
+        <div class="radio-option">
+          <input type="radio" id="guest" name="modo">
+          <label for="guest">Continuar sin loguearme</label>
+        </div>
+
+        <button type="submit" class="next-btn">Siguiente ➜</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
