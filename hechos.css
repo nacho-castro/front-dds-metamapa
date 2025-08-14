@@ -1,95 +1,148 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
+/* === METAMAPA HOME === */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;     /* Usa el mismo color del texto actual */
+  text-decoration: none;
+}
 
-    .card-container {
-      background-color: white;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+.logo:hover {
+  text-decoration: underline;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+/* MAPA */
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centra horizontalmente */
+  padding: 20px;
+  /* Margen interno */
+}
 
-    h2 {
-      margin: 0;
-      color: #555;
-    }
+.map-container iframe {
+  width: 95%;
+  /* Ocupa casi todo el ancho */
+  height: 60vh;
+  /* Más ancho que alto */
+  border: 2px solid #333;
+  /* Borde estético */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* Sombra suave */
+}
 
-    .buttons {
-      display: flex;
-      gap: 8px;
-    }
+.map-container small {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
 
-    .btn {
-      background-color: #f3e9ff;
-      color: #7a42c2;
-      border: none;
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-       text-decoration: none; /* Quita el subrayado */
-    display: inline-block;/* Asegura que se comporte como botón */
-    color: inherit;/* Mantiene el mismo color del texto que el resto de los botones */
-    }
+.map-container a {
+  color: #0077cc;
+  text-decoration: none;
+}
 
-    .btn:hover {
-      background-color: #e3d3ff;
-    }
+.map-container a:hover {
+  text-decoration: underline;
+}
 
-    .icon-user {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      background-color: white;
-    }
+/* === COLECCIONES === */
+.card-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .card {
-      background-color: #f0f0f0;
-      height: 100px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    
+h2 {
+  margin: 0;
+  color: #555;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  background-color: #f3e9ff;
+  color: #7a42c2;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  /* Quita el subrayado */
+  display: inline-block;
+  /* Asegura que se comporte como botón */
+  color: inherit;
+  /* Mantiene el mismo color del texto que el resto de los botones */
+}
+
+.btn:hover {
+  background-color: #e3d3ff;
+}
+
+.icon-user {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background-color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: #f0f0f0;
+  height: 100px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
 .login-btn {
   padding: 10px 20px;
   background-color: #a388ee;
@@ -105,12 +158,14 @@
 
 /* Fondo oscuro al abrir modal */
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Caja modal */
@@ -145,7 +200,7 @@
   color: #777;
 }
 
-/* Formulario */
+/* Formulario MODAL */
 form {
   padding: 20px;
   display: flex;
@@ -185,4 +240,68 @@ input[type="password"] {
 
 .next-btn:hover {
   background-color: #ccc;
+}
+
+/* Etiquetas al cargar hecho */
+.tag-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #d9dde2;
+  border-radius: 8px;
+  background: #fff;
+  gap: 4px;
+}
+
+.tag-input input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  padding: 4px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  background: #e7f3ff;
+  color: #0073b1;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: #0073b1;
+  margin-left: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.footer-link {
+  color: #0b1116;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  margin: 0.5rem 0 0;
+  color: #555;
 }

@@ -11,16 +11,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
+<!-- COMIENZA LANDING PAGE -->
+
 <body>
+  <!-- Barra de Navegacion -->
   <nav>
     <div class="header-left">
-      <h2>MetaMapa</h2>
+      <a href="index.html" class="logo">MetaMapa</a>
       <div class="buttons">
-        <a href="hechos.html" class="btn">🗺️ Hechos</button>
-        <a href="acerca.html" class="btn">📃 Acerca De</a>
+        <button class="btn" onclick="location.href='hechos.html'">🗺️ Hechos</button>
       </div>
     </div>
-    <button id="openModal" class="btn">👤 Login</button>
+    <button id="openLoginModal" class="btn">👤 Login</button>
   </nav>
 
   <header>
@@ -28,6 +30,7 @@
     <p>Sistema de gestión de mapeos</p>
   </header>
 
+  <!-- Proposito, Objetivos y Ejemplos -->
   <main>
     <div class="card">
       <h2>Propósito</h2>
@@ -42,6 +45,11 @@
       <p>Presenta ejemplos destacados de colecciones y hechos para que el visitante se interese en explorar más.</p>
     </div>
   </main>
+
+  <footer>
+    <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
+    <p>© 2025 · <strong>Diseño de Sistemas</strong> - Grupo 5</p>
+  </footer>
 
   <!-- Modal de Login -->
   <div id="loginModal" class="modal">

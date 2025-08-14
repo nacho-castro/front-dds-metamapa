@@ -8,33 +8,54 @@
   <link rel="stylesheet" href="hechos.css">
 </head>
 
+<!-- VISUALIZADOR DE HECHOS -->
+
 <body>
+  <!-- BARRA DE NAVEGACION -->
   <nav>
     <div class="header">
       <div class="header-left">
-        <h2>MetaMapa</h2>
+        <a href="index.html" class="logo">MetaMapa</a>
         <div class="buttons">
-          <button class="btn" onclick="location.href='index.html'">🏠 Inicio</button>
           <button class="btn">☰ Filtrar</button>
           <button class="btn">🔍 Buscar</button>
-          <button class="btn" onclick="location.href='acerca.html'">📃 Acerca De</button>
+          <!-- Botón para crear hecho -->
+          <button id="openHechoModal" class="btn">Cargar Hecho</button>
         </div>
-       
+
       </div>
-       <!-- Botón para abrir el modal -->
-        <button id="openModal" class="btn">👤 Login</button>
+      <!-- Botón para abrir el modal -->
+      <button id="openLoginModal" class="btn">👤 Login</button>
     </div>
   </nav>
 
-   <div class="grid">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-    </div>
+  <!-- MAPA INTERACTIVO CON HECHOS CARGADOS -->
+  <div class="map-container">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-58.3816%2C-34.6037%2C-58.3700%2C-34.5950&amp;layer=mapnik"
+      frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+    </iframe>
+    <small>
+      <a href="https://www.openstreetmap.org/#map=16/-34.5994/-58.3758" target="_blank">Ver mapa más grande</a>
+    </small>
+  </div>
 
+  <!-- COLECCIONES -->
+  <div class="grid">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+
+  <footer>
+    <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
+    <p>© 2025 · Creado por <strong>Diseño de Sistemas - Grupo 5</strong></p>
+  </footer>
+
+  <!-- MODALES -->
   <!-- Modal de Login -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
@@ -42,7 +63,7 @@
       <div class="modal-header">
         <h2>Login</h2>
       </div>
-      <form>
+      <form id="loginForm">
         <label>Nombre de usuario</label>
         <input type="text" name="usuario" placeholder="Ingrese su usuario">
 
@@ -59,6 +80,37 @@
     </div>
   </div>
 
+  <!-- Modal de Cargar Hecho -->
+  <div id="hechoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">
+        <h2>Cargar Hecho</h2>
+      </div>
+      <form id="hechoForm">
+        <label>Título</label>
+        <input type="text" name="titulo" placeholder="Ingrese título" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" required></textarea>
+
+        <label>Categoría</label>
+        <input type="text" name="categoria" placeholder="Ingrese categoría" required>
+
+        <label>Fecha del acontecimiento</label>
+        <input type="date" name="fechaAcontecimiento" required>
+
+        <label>Etiquetas</label>
+        <div class="tag-input" id="tagInput">
+          <input type="text" placeholder="Ej: inundación, tormenta, incendio">
+        </div>
+
+        <button type="submit" class="next-btn">Enviar</button>
+      </form>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>

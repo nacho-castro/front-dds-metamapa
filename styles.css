@@ -9,6 +9,18 @@ body {
         radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
 }
 
+/* === METAMAPA HOME === */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;     /* Usa el mismo color del texto actual */
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: underline;
+}
+
 /* === NAVBAR === */
 nav {
     position: fixed;
@@ -211,3 +223,26 @@ input[type="password"] {
 .next-btn:hover {
   background-color: #ccc;
 }
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+  .footer-link {
+    color: #0b1116;
+    text-decoration: none;
+  }
+  .footer-link:hover {
+    text-decoration: underline;
+  }
+  footer p {
+    margin: 0.5rem 0 0;
+    color: #555;
+  }

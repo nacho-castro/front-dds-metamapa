@@ -9,6 +9,18 @@ body {
         radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
 }
 
+/* === METAMAPA HOME === */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;     /* Usa el mismo color del texto actual */
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: underline;
+}
+
 /* NAVBAR */
 nav {
     position: fixed;
