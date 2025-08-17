@@ -1,11 +1,84 @@
+/* =============================
+   ESTILOS GENERALES
+============================= */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
   margin: 0;
-  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  color: #0b1116;
+  background:
+    radial-gradient(1200px 700px at -10% 70%, rgba(233, 205, 196, .28), transparent 60%),
+    radial-gradient(900px 600px at 35% -10%, rgba(197, 226, 232, .30), transparent 55%),
+    radial-gradient(700px 500px at 60% 40%, rgba(220, 232, 238, .45), transparent 60%),
+    radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
+  padding-top: 80px; /* un poco más que 60px */
 }
 
-/* === METAMAPA HOME === */
+h2 {
+  margin: 0;
+  color: #555;
+}
+
+/* =============================
+   BARRA DE NAVEGACION
+============================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* =============================
+   BOTONES GENERALES
+============================= */
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    background: #f5f6f7;
+    border: 1px solid #d9dde2;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+     text-decoration: none; /* Quita el subrayado */
+    display: inline-block;/* Asegura que se comporte como botón */
+    color: inherit;/* Mantiene el mismo color del texto que el resto de los botones */
+}
+
+.btn:hover {
+    background: #ffffff;
+}
+
+/* =============================
+   LOGO (HEADER / HOME)
+============================= */
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -17,98 +90,20 @@ body {
   text-decoration: underline;
 }
 
-
-/* MAPA */
-.map-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Centra horizontalmente */
-  padding: 20px;
-  /* Margen interno */
-}
-
-.map-container iframe {
-  width: 95%;
-  /* Ocupa casi todo el ancho */
-  height: 60vh;
-  /* Más ancho que alto */
-  border: 2px solid #333;
-  /* Borde estético */
-  border-radius: 10px;
-  /* Bordes redondeados */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  /* Sombra suave */
-}
-
-.map-container small {
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
-
-.map-container a {
-  color: #0077cc;
-  text-decoration: none;
-}
-
-.map-container a:hover {
-  text-decoration: underline;
-}
-
-/* === COLECCIONES === */
-.card-container {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-h2 {
-  margin: 0;
-  color: #555;
-}
-
-.buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.btn {
-  background-color: #f3e9ff;
-  color: #7a42c2;
+/* =============================
+   LOGIN / ICONOS DE USUARIO
+============================= */
+.login-btn {
+  padding: 10px 20px;
+  background-color: #a388ee;
+  color: white;
   border: none;
   border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 14px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-  /* Quita el subrayado */
-  display: inline-block;
-  /* Asegura que se comporte como botón */
-  color: inherit;
-  /* Mantiene el mismo color del texto que el resto de los botones */
 }
 
-.btn:hover {
-  background-color: #e3d3ff;
+.login-btn:hover {
+  background-color: #8d6fe2;
 }
 
 .icon-user {
@@ -123,40 +118,94 @@ h2 {
   background-color: white;
 }
 
+/* =============================
+   CARDS DE HECHOS / COLECCIONES
+============================= */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* centra el grid */
 }
 
-.card {
-  background-color: #f0f0f0;
-  height: 100px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+/* RESPONSIVE GRID */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
 }
 
 @media (max-width: 600px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* 1 columna en celular */
   }
 }
 
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-.login-btn {
-  padding: 10px 20px;
-  background-color: #a388ee;
-  color: white;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #2d2d2d;
+}
+
+.card p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.card .meta {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #7a42c2;
+  margin-bottom: 0.75rem;
+}
+
+.card button {
+  background: linear-gradient(135deg, #7a42c2, #a271e0);
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
 }
 
-.login-btn:hover {
-  background-color: #8d6fe2;
+.card button:hover {
+  background: linear-gradient(135deg, #6433a8, #8d5ad6);
+  transform: scale(1.05);
 }
 
-/* Fondo oscuro al abrir modal */
+/* Contenedor centrado (opcional) */
+.card-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================
+   MODALES
+============================= */
 .modal {
   display: none;
   position: fixed;
@@ -165,10 +214,9 @@ h2 {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
 }
 
-/* Caja modal */
 .modal-content {
   background-color: white;
   margin: 10% auto;
@@ -178,7 +226,6 @@ h2 {
   overflow: hidden;
 }
 
-/* Encabezado violeta */
 .modal-header {
   background-color: #ece2ff;
   padding: 20px;
@@ -190,7 +237,6 @@ h2 {
   color: #9b80d6;
 }
 
-/* Botón cerrar */
 .close {
   position: absolute;
   right: 20px;
@@ -200,7 +246,9 @@ h2 {
   color: #777;
 }
 
-/* Formulario MODAL */
+/* =============================
+   FORMULARIOS (Modal, etc.)
+============================= */
 form {
   padding: 20px;
   display: flex;
@@ -242,7 +290,9 @@ input[type="password"] {
   background-color: #ccc;
 }
 
-/* Etiquetas al cargar hecho */
+/* =============================
+   TAG INPUT (Etiquetas al cargar hecho)
+============================= */
 .tag-input {
   display: flex;
   flex-wrap: wrap;
@@ -281,7 +331,9 @@ input[type="password"] {
   font-size: 0.85rem;
 }
 
-/* FOOTER */
+/* =============================
+   FOOTER
+============================= */
 footer {
   text-align: center;
   padding: 1rem;

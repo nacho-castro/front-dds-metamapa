@@ -19,30 +19,103 @@
     <div class="header-left">
       <a href="index.html" class="logo">MetaMapa</a>
       <div class="buttons">
-        <button class="btn" onclick="location.href='hechos.html'">🗺️ Hechos</button>
+        <button class="btn" onclick="location.href='colecciones.html'">🗺️ Colecciones</button>
       </div>
     </div>
     <button id="openLoginModal" class="btn">👤 Login</button>
   </nav>
 
-  <header>
-    <h1>MetaMapa</h1>
-    <p>Sistema de gestión de mapeos</p>
+  <header class="full-width-hero">
+    <div class="hero">
+      <img src="./images/mapa.jpg" alt="Mapa Banner">
+      <div class="hero-text">
+        <h1>MetaMapa</h1>
+        <h2>Sistema de Gestión de Mapeos</h2>
+      </div>
+    </div>
   </header>
+
+  <div class="intro-section">
+    <p class="intro-paragraph">
+      <span class="highlight">MetaMapa</span> es un sistema de gestión de mapeos colaborativos de código abierto,
+      desarrollado junto a una ONG, que permite recopilar y visibilizar información de manera descentralizada.
+    </p>
+
+    <p class="intro-paragraph">
+      Cada hecho registrado —ya sea un incendio, una inundación, un foco de contaminación o un evento social— se
+      organiza en <span class="highlight">colecciones</span> y se ubica en tiempo y espacio, aportando valor a la
+      comunidad.
+    </p>
+
+    <p class="intro-paragraph">
+      Cualquier persona puede contribuir de forma anónima o registrada, cargando información en texto, imágenes, audios
+      o videos. Además, MetaMapa integra datos de otras ONG y fuentes oficiales, generando una visión más completa
+      gracias a su servicio de agregación.
+    </p>
+
+    <p class="intro-paragraph">
+      El sistema está pensado para ser implementado por distintas instituciones que deseen brindar a sus comunidades una
+      herramienta confiable, segura y accesible, con la misión de <span class="highlight">transformar datos dispersos en
+        conocimiento útil</span> para la acción colectiva.
+    </p>
+  </div>
 
   <!-- Proposito, Objetivos y Ejemplos -->
   <main>
+    <!-- Proposito -->
     <div class="card">
-      <h2>Propósito</h2>
-      <p>Aquí puedes describir el propósito principal de MetaMapa, sus beneficios y a quién está dirigido.</p>
+      <h2>🌎 Propósito</h2>
+      <p>MetaMapa nace para transformar la inteligencia colectiva en acción. Su propósito es recopilar, organizar y
+        visibilizar información colaborativa en tiempo y espacio, para que comunidades, ONG, universidades y organismos
+        públicos puedan prevenir riesgos, resolver problemáticas sociales y ambientales, y construir conocimiento
+        confiable de manera abierta y descentralizada.</p>
     </div>
+
+    <!-- Objetivos -->
     <div class="card">
-      <h2>Objetivos</h2>
-      <p>Agrega los objetivos clave: qué problemas soluciona y qué valor aporta a los usuarios.</p>
+      <h2>🎯 Objetivos</h2>
+      <ul>
+        <li>Reunir información confiable a través de la colaboración de personas, datasets y organizaciones.</li>
+        <li>Organizar los datos en mapas y colecciones que permitan identificar patrones, causas y consecuencias de los
+          hechos.</li>
+        <li>Garantizar transparencia y accesibilidad, sin recolectar información personal de quienes consultan.
+        </li>
+        <li>Ofrecer un sistema descentralizado, resistente a fallas y ataques, que proteja la disponibilidad de los
+          datos.</li>
+        <li>Favorecer la acción comunitaria, poniendo a disposición herramientas abiertas para el análisis y la toma de
+          decisiones.</li>
+      </ul>
     </div>
+
+    <!-- Ejemplos -->
     <div class="card">
       <h2>Ejemplos de colecciones</h2>
-      <p>Presenta ejemplos destacados de colecciones y hechos para que el visitante se interese en explorar más.</p>
+      <p>Colecciones y hechos destacados de la semana:</p>
+
+      <div class="card-collection">
+        <h3>Colección de Incendios</h3>
+        <p>Contiene reportes de incendios urbanos y forestales.</p>
+        <div class="meta">Algoritmo: Proof of Stake</div>
+        <button>Ver colección</button>
+      </div>
+
+      <div class="card-hecho">
+        <h3>Inundación en La Plata</h3>
+        <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+        <p><strong>Categoría:</strong> Clima</p>
+        <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+        <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+        <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+        <div class="meta">
+          Estado: <span class="activo">Activo</span>
+        </div>
+        <button>Ver detalle</button>
+      </div>
+      
+      <button onclick="location.href='colecciones.html'" class="btn-collection">Visualizar Colecciones!</button>
+
     </div>
   </main>
 

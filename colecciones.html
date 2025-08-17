@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMapa - Mapa</title>
+  <link rel="stylesheet" href="colecciones.css">
+</head>
+
+<!-- VISUALIZADOR DE COLECCIONES Y MAPA -->
+<body>
+  <!-- BARRA DE NAVEGACION -->
+  <nav>
+    <div class="header">
+      <div class="header-left">
+        <a href="index.html" class="logo">MetaMapa</a>
+        <div class="buttons">
+          <button class="btn">☰ Filtrar</button>
+          <button class="btn">🔍 Buscar</button>
+        </div>
+
+      </div>
+      <!-- Botón para abrir el modal -->
+      <button id="openLoginModal" class="btn">👤 Login</button>
+    </div>
+  </nav>
+
+  <!-- MAPA INTERACTIVO CON HECHOS CARGADOS -->
+  <div class="map-container">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-58.3816%2C-34.6037%2C-58.3700%2C-34.5950&amp;layer=mapnik"
+      frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+    </iframe>
+    <small>
+      <a href="https://www.openstreetmap.org/#map=16/-34.5994/-58.3758" target="_blank">Ver mapa más grande</a>
+    </small>
+  </div>
+
+  <!-- COLECCIONES -->
+  <div class="grid">
+    <!-- Card de colección -->
+    <div class="card">
+      <h3>Colección de Inundaciones</h3>
+      <p>Registra los hechos relacionados con inundaciones en distintas regiones del país.</p>
+      <div class="meta">Algoritmo: Proof of Work</div>
+      <button onclick="verColeccion(1)">Ver colección</button>
+    </div>
+
+    <div class="card">
+      <h3>Colección de Incendios</h3>
+      <p>Contiene reportes de incendios urbanos y forestales.</p>
+      <div class="meta">Algoritmo: Proof of Stake</div>
+      <button onclick="verColeccion(2)">Ver colección</button>
+    </div>
+
+    <div class="card">
+      <h3>Colección de Incendios</h3>
+      <p>Contiene reportes de incendios urbanos y forestales.</p>
+      <div class="meta">Algoritmo: Proof of Stake</div>
+      <button onclick="verColeccion(3)">Ver colección</button>
+    </div>
+
+    <div class="card">
+      <h3>Colección de Incendios</h3>
+      <p>Contiene reportes de incendios urbanos y forestales.</p>
+      <div class="meta">Algoritmo: Proof of Stake</div>
+      <button onclick="verColeccion(4)">Ver colección</button>
+    </div>
+
+    <div class="card">
+      <h3>Colección de Incendios</h3>
+      <p>Contiene reportes de incendios urbanos y forestales.</p>
+      <div class="meta">Algoritmo: Proof of Stake</div>
+      <button onclick="verColeccion(5)">Ver colección</button>
+    </div>
+
+        <div class="card">
+      <h3>Colección de Incendios</h3>
+      <p>Contiene reportes de incendios urbanos y forestales.</p>
+      <div class="meta">Algoritmo: Proof of Stake</div>
+      <button onclick="verColeccion(6)">Ver colección</button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
+    <p>© 2025 · <strong>Diseño de Sistemas</strong> - Grupo 5</p>
+  </footer>
+
+  <!-- MODALES -->
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">
+        <h2>Login</h2>
+      </div>
+      <form id="loginForm">
+        <label>Nombre de usuario</label>
+        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="Ingrese su contraseña">
+
+        <div class="radio-option">
+          <input type="radio" id="guest" name="modo">
+          <label for="guest">Continuar sin loguearme</label>
+        </div>
+
+        <button type="submit" class="next-btn">Siguiente ➜</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

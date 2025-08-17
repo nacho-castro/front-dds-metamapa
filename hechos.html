@@ -3,59 +3,113 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MetaMapa</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MetaMapa - Coleccion</title>
   <link rel="stylesheet" href="hechos.css">
 </head>
 
-<!-- VISUALIZADOR DE HECHOS -->
-
 <body>
-  <!-- BARRA DE NAVEGACION -->
+  <!-- Barra de Navegacion -->
   <nav>
-    <div class="header">
-      <div class="header-left">
-        <a href="index.html" class="logo">MetaMapa</a>
-        <div class="buttons">
-          <button class="btn">☰ Filtrar</button>
-          <button class="btn">🔍 Buscar</button>
-          <!-- Botón para crear hecho -->
-          <button id="openHechoModal" class="btn">Cargar Hecho</button>
-        </div>
-
+    <div class="header-left">
+      <a href="index.html" class="logo">MetaMapa</a>
+      <div class="buttons">
+        <button class="btn" onclick="location.href='colecciones.html'">🗺️ Colecciones</button>
+        <!-- Botón para crear hecho -->
+        <button id="openHechoModal" class="btn">📋 Cargar Hecho</button>
       </div>
-      <!-- Botón para abrir el modal -->
-      <button id="openLoginModal" class="btn">👤 Login</button>
     </div>
+    <button id="openLoginModal" class="btn">👤 Login</button>
   </nav>
 
-  <!-- MAPA INTERACTIVO CON HECHOS CARGADOS -->
-  <div class="map-container">
-    <iframe
-      src="https://www.openstreetmap.org/export/embed.html?bbox=-58.3816%2C-34.6037%2C-58.3700%2C-34.5950&amp;layer=mapnik"
-      frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-    </iframe>
-    <small>
-      <a href="https://www.openstreetmap.org/#map=16/-34.5994/-58.3758" target="_blank">Ver mapa más grande</a>
-    </small>
-  </div>
-
-  <!-- COLECCIONES -->
+  <!-- CARDS DE HECHOS DENTRO DE LA COLECCION -->
   <div class="grid">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+
+    <!-- Card de Hecho -->
+
+    <div class="card">
+      <h3>Inundación en La Plata</h3>
+      <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+      <p><strong>Categoría:</strong> Clima</p>
+      <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+      <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+      <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+      <div class="meta">
+        Estado: <span class="activo">Activo</span>
+      </div>
+      <button onclick="verHecho(10)">Ver detalle</button>
+    </div>
+
+    <div class="card">
+      <h3>Inundación en La Plata</h3>
+      <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+      <p><strong>Categoría:</strong> Clima</p>
+      <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+      <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+      <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+      <div class="meta">
+        Estado: <span class="activo">Activo</span>
+      </div>
+      <button onclick="verHecho(10)">Ver detalle</button>
+    </div>
+
+    <div class="card">
+      <h3>Inundación en La Plata</h3>
+      <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+      <p><strong>Categoría:</strong> Clima</p>
+      <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+      <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+      <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+      <div class="meta">
+        Estado: <span class="activo">Activo</span>
+      </div>
+      <button onclick="verHecho(10)">Ver detalle</button>
+    </div>
+
+    <div class="card">
+      <h3>Inundación en La Plata</h3>
+      <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+      <p><strong>Categoría:</strong> Clima</p>
+      <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+      <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+      <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+      <div class="meta">
+        Estado: <span class="activo">Activo</span>
+      </div>
+      <button onclick="verHecho(10)">Ver detalle</button>
+    </div>
+
+    <div class="card">
+      <h3>Inundación en La Plata</h3>
+      <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
+
+      <p><strong>Categoría:</strong> Clima</p>
+      <p><strong>Fecha del acontecimiento:</strong> 2013-04-02</p>
+      <p><strong>Fecha de carga:</strong> 2025-08-16</p>
+      <p><strong>Lugar:</strong> La Plata, Buenos Aires</p>
+
+      <div class="meta">
+        Estado: <span class="activo">Activo</span>
+      </div>
+      <button onclick="verHecho(5)">Ver detalle</button>
+    </div>
+
   </div>
 
+  <!-- Footer -->
   <footer>
     <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
-    <p>© 2025 · Creado por <strong>Diseño de Sistemas - Grupo 5</strong></p>
+    <p>© 2025 · <strong>Diseño de Sistemas</strong> - Grupo 5</p>
   </footer>
 
-  <!-- MODALES -->
   <!-- Modal de Login -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
@@ -63,7 +117,7 @@
       <div class="modal-header">
         <h2>Login</h2>
       </div>
-      <form id="loginForm">
+      <form>
         <label>Nombre de usuario</label>
         <input type="text" name="usuario" placeholder="Ingrese su usuario">
 

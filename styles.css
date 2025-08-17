@@ -1,19 +1,43 @@
+/* === GENERAL === */
 body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #0b1116;
-    background:
-        radial-gradient(1200px 700px at -10% 70%, rgba(233, 205, 196, .28), transparent 60%),
-        radial-gradient(900px 600px at 35% -10%, rgba(197, 226, 232, .30), transparent 55%),
-        radial-gradient(700px 500px at 60% 40%, rgba(220, 232, 238, .45), transparent 60%),
-        radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #0b1116;
+  line-height: 1.6;
+  background:
+    radial-gradient(1200px 700px at -10% 70%, rgba(233, 205, 196, .28), transparent 60%),
+    radial-gradient(900px 600px at 35% -10%, rgba(197, 226, 232, .30), transparent 55%),
+    radial-gradient(700px 500px at 60% 40%, rgba(220, 232, 238, .45), transparent 60%),
+    radial-gradient(1200px 900px at 90% 10%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .95) 50%, rgba(255, 255, 255, 1) 60%);
 }
 
-/* === METAMAPA HOME === */
+/* === NAVBAR === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: inherit;     /* Usa el mismo color del texto actual */
+  color: inherit;
   text-decoration: none;
 }
 
@@ -21,136 +45,177 @@ body {
   text-decoration: underline;
 }
 
-/* === NAVBAR === */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    z-index: 1000;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.header-left h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
 .buttons {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .btn {
-    background: #f5f6f7;
-    border: 1px solid #d9dde2;
-    border-radius: 8px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-     text-decoration: none; /* Quita el subrayado */
-    display: inline-block;/* Asegura que se comporte como botón */
-    color: inherit;/* Mantiene el mismo color del texto que el resto de los botones */
+  background: #f5f6f7;
+  border: 1px solid #d9dde2;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
 }
 
 .btn:hover {
-    background: #ffffff;
+  background: #ffffff;
+}
+
+/* === BANNER === */
+/* Contenedor full-width para la imagen */
+.full-width-hero {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero con imagen */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: none;
+}
+
+/* Texto centrado sobre la imagen */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #0b1116;
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.7);
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.2em 0;
+}
+
+.hero-text h2 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 /* === HEADER LANDING === */
 header {
-    text-align: center;
-    padding-top: 6rem;
-    /* deja espacio para el nav */
-    padding-bottom: 1rem;
+  padding: 4rem 2rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-header h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
-    margin: 0;
+.intro-section {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
 }
 
-header p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-top: 0.5rem;
+.intro-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  text-align: justify;
+  margin-bottom: 1.6rem;
+  text-justify: inter-word;
+}
+
+.intro-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  font-weight: 600;
+  color: #34495e;
 }
 
 /* === SECCIONES DE LA LANDING === */
 main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .card {
-    flex: 0 0 100vh;
-    /* cada bloque ocupa toda la ventana */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    border-radius: 0;
-    /* full width, sin bordes redondeados */
-    box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
-    padding: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .05);
+  padding: 2rem;
+  text-align: left;
 }
 
 .card h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.card p {
-    max-width: 800px;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #333;
+.card p,
+.card ul {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.card ul {
+  padding-left: 1.2rem;
+}
+
+/*BOTON DE VISUALIZAR COLECCIONES - EJEMPLO CARD*/
+.btn-collection{
+  background: linear-gradient(135deg, #7a42c2, #a271e0);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto 0; /* margen superior opcional */
+  display: block;        /* Para que respete el width completo */
+  width: 90%;           /* Ocupa todo el ancho del contenedor */
+  box-sizing: border-box; /* Para que el padding no sobresalga del ancho */
+}
+
+.btn-collection:hover {
+  background: linear-gradient(135deg, #6433a8, #8d5ad6);
+  transform: scale(1.05);
 }
 
 /* === MODAL DEL BOTON LOGIN === */
-.login-btn {
-  padding: 10px 20px;
-  background-color: #a388ee;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.login-btn:hover {
-  background-color: #8d6fe2;
-}
-
-/* Fondo oscuro al abrir modal */
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Caja modal */
 .modal-content {
   background-color: white;
   margin: 10% auto;
@@ -160,7 +225,6 @@ main {
   overflow: hidden;
 }
 
-/* Encabezado violeta */
 .modal-header {
   background-color: #ece2ff;
   padding: 20px;
@@ -172,7 +236,6 @@ main {
   color: #9b80d6;
 }
 
-/* Botón cerrar */
 .close {
   position: absolute;
   right: 20px;
@@ -182,7 +245,6 @@ main {
   color: #777;
 }
 
-/* Formulario */
 form {
   padding: 20px;
   display: flex;
@@ -224,25 +286,156 @@ input[type="password"] {
   background-color: #ccc;
 }
 
-
 /* FOOTER */
 footer {
-    text-align: center;
-    padding: 1rem;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(0,0,0,0.05);
-    font-size: 0.9rem;
-    margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.footer-link {
+  color: #0b1116;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  margin: 0.5rem 0 0;
+  color: #555;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.2rem;
   }
-  .footer-link {
-    color: #0b1116;
-    text-decoration: none;
+
+  .hero-text h2 {
+    font-size: 1.2rem;
   }
-  .footer-link:hover {
-    text-decoration: underline;
+
+  header {
+    padding: 3rem 1.5rem 2rem;
   }
-  footer p {
-    margin: 0.5rem 0 0;
-    color: #555;
+
+  .intro-paragraph {
+    font-size: 1rem;
+    text-align: left;
   }
+
+  main {
+    padding: 0 1.5rem;
+  }
+}
+
+/*CARD HECHO - EJEMPLO CARD*/
+.card-hecho {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card-hecho:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-hecho h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #2d2d2d;
+}
+
+.card-hecho p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.card-hecho .meta {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #7a42c2;
+  margin-bottom: 0.75rem;
+}
+
+.card-hecho button {
+  background: linear-gradient(135deg, #7a42c2, #a271e0);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.card-hecho button:hover {
+  background: linear-gradient(135deg, #6433a8, #8d5ad6);
+  transform: scale(1.05);
+}
+
+/*CARD COLLECTION - EJEMPLO CARD*/
+.card-collection {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card-collection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-collection h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+}
+
+.card-collection p {
+  flex-grow: 1;
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.card-collection .meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.card-collection button {
+  align-self: flex-start;
+  background:  #7a42c2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.card-collection button:hover {
+  background:  #3c1371;
+}

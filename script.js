@@ -46,43 +46,50 @@ initModal("hechoModal", "openHechoModal");
 
 //MANEJO DE ETIQUETAS EN EL FORM CARGAR HECHO
 const tagInputContainer = document.getElementById("tagInput");
-  const tagInputField = tagInputContainer.querySelector("input");
-  let tags = [];
+const tagInputField = tagInputContainer.querySelector("input");
+let tags = [];
 
-  function addTag(text) {
-    const tagText = text.trim();
-    if (tagText !== "" && !tags.includes(tagText)) {
-      tags.push(tagText);
+function addTag(text) {
+  const tagText = text.trim();
+  if (tagText !== "" && !tags.includes(tagText)) {
+    tags.push(tagText);
 
-      const tagEl = document.createElement("span");
-      tagEl.classList.add("tag");
-      tagEl.textContent = tagText;
+    const tagEl = document.createElement("span");
+    tagEl.classList.add("tag");
+    tagEl.textContent = tagText;
 
-      const removeBtn = document.createElement("button");
-      removeBtn.type = "button";
-      removeBtn.innerHTML = "&times;";
-      removeBtn.onclick = () => {
-        tags = tags.filter(t => t !== tagText);
-        tagEl.remove();
-      };
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.innerHTML = "&times;";
+    removeBtn.onclick = () => {
+      tags = tags.filter(t => t !== tagText);
+      tagEl.remove();
+    };
 
-      tagEl.appendChild(removeBtn);
-      tagInputContainer.insertBefore(tagEl, tagInputField);
-    }
-    tagInputField.value = "";
+    tagEl.appendChild(removeBtn);
+    tagInputContainer.insertBefore(tagEl, tagInputField);
   }
+  tagInputField.value = "";
+}
 
-  tagInputField.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === "," || e.key === " ") {
-      e.preventDefault();
-      addTag(tagInputField.value);
-    }
-  });
-
-  // Para usar en el envío del formulario
-  function getTags() {
-    return tags.map(t => ({ nombre: t })); // formato para tu DTO
+tagInputField.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === "," || e.key === " ") {
+    e.preventDefault();
+    addTag(tagInputField.value);
   }
+});
+
+// Para usar en el envío del formulario
+function getTags() {
+  return tags.map(t => ({ nombre: t })); // formato para tu DTO
+}
+
+//ENTRAR A COLECCIONES
+function verColeccion(id) {
+  alert("Entrando a la colección con id: " + id);
+  //aca redirigir a la vista de la coleccion
+  window.location.href = "hechos.html?id=" + id;
+}
 
 //HTTP POST (crear usuario) -> localhost8080/crear user&contraseña USUARIODTO JSON
 //HTTP POST (login usuario) -> localhost8080/login user&contraseña USUARIODTO JSON
