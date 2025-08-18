@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>MetaMapa - Crear Cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="registro.css">
+</head>
+
+<body>
+  <div class="signup-container">
+    <!-- Header -->
+    <div class="logo-container">
+      <div class="logo">MetaMapa</div>
+      <p class="logo-subtitle">Sistema de Gestión de Mapeos</p>
+    </div>
+
+    <div class="form-header">
+      <h1 class="form-title">Crear cuenta</h1>
+    </div>
+
+    <!-- Formulario -->
+    <form id="signupForm">
+
+      <!-- Email -->
+      <div class="form-group">
+        <input type="email" class="form-input" name="email" placeholder="Correo electrónico" required>
+      </div>
+
+      <!-- Nombre -->
+      <div class="form-group">
+        <input type="text" class="form-input" name="nombre" placeholder="Nombre completo" required>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="form-group">
+        <input type="password" class="form-input" name="password" placeholder="Contraseña nueva" required>
+      </div>
+
+      <!-- Edad -->
+      <div class="form-group">
+        <label class="birthday-label" for="edad">Edad</label>
+        <input type="number" id="edad" name="edad" class="birthday-select" min="13" max="120" required>
+      </div>
+
+      <!-- Términos y condiciones -->
+      <p class="terms-text">
+        Al hacer clic en "Registrarse", aceptas nuestros<br>
+        <a href="../acerca-page/acerca.html" class="terms-link">Términos y Condiciones</a>
+      </p>
+
+      <!-- Botón de registro -->
+      <button type="submit" class="signup-btn">Registrarse</button>
+    </form>
+
+    <!-- Enlace para iniciar sesión -->
+    <div class="login-link-container">
+      <a href="#" class="login-link">¿Ya tienes una cuenta?</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Obtener los datos del formulario
+      const formData = new FormData(this);
+      const userData = {
+        nombre: formData.get('nombre'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        edad: parseInt(formData.get('edad'))
+      };
+
+      // Validaciones básicas
+      if (!userData.nombre || !userData.email || !userData.password || !userData.edad) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      if (userData.password.length < 6) {
+        alert('La contraseña debe tener al menos 6 caracteres.');
+        return;
+      }
+
+      // Aquí puedes enviar los datos a tu backend
+      console.log('Datos del usuario:', userData);
+      alert('¡Cuenta creada exitosamente!');
+
+      // Redirigir o limpiar el formulario
+      this.reset();
+    });
+
+    // Mejorar la experiencia del usuario
+    const inputs = document.querySelectorAll('.form-input');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function () {
+        this.parentNode.style.transform = 'scale(1.02)';
+      });
+
+      input.addEventListener('blur', function () {
+        this.parentNode.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+
+</html>

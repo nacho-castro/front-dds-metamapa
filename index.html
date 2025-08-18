@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>MetaMapa - Landing</title>
+  <link rel="icon" type="image/png" href="images/metamapa-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,33 +13,31 @@
 </head>
 
 <!-- COMIENZA LANDING PAGE -->
-
 <body>
   <!-- Barra de Navegacion -->
   <nav>
     <div class="header-left">
       <a href="index.html" class="logo">MetaMapa</a>
       <div class="buttons">
-        <button class="btn" onclick="location.href='colecciones.html'">🗺️ Colecciones</button>
+        <button class="btn" onclick="location.href='./components/colecciones-page/colecciones.html'">🗺️ Colecciones</button>
       </div>
     </div>
     <button id="openLoginModal" class="btn">👤 Login</button>
   </nav>
 
-  <header class="full-width-hero">
-    <div class="hero">
+
+  <div class="hero">
       <img src="./images/mapa.jpg" alt="Mapa Banner">
       <div class="hero-text">
         <h1>MetaMapa</h1>
         <h2>Sistema de Gestión de Mapeos</h2>
       </div>
     </div>
-  </header>
 
   <div class="intro-section">
     <p class="intro-paragraph">
       <span class="highlight">MetaMapa</span> es un sistema de gestión de mapeos colaborativos de código abierto,
-      desarrollado junto a una ONG, que permite recopilar y visibilizar información de manera descentralizada.
+      desarrollado junto a la Universidad Tecnológica Nacional, que permite recopilar y visibilizar información de manera descentralizada.
     </p>
 
     <p class="intro-paragraph">
@@ -113,14 +112,14 @@
         </div>
         <button>Ver detalle</button>
       </div>
-      
-      <button onclick="location.href='colecciones.html'" class="btn-collection">Visualizar Colecciones!</button>
+
+      <button onclick="location.href='./components/colecciones-page/colecciones.html'" class="btn-collection">Visualizar más Colecciones</button>
 
     </div>
   </main>
 
   <footer>
-    <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
+    <a href="./components/acerca-page/acerca.html" class="footer-link">Información legal y privacidad</a>
     <p>© 2025 · <strong>Diseño de Sistemas</strong> - Grupo 5</p>
   </footer>
 
@@ -133,14 +132,14 @@
       </div>
       <form>
         <label>Nombre de usuario</label>
-        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+        <input type="text" name="usuario" placeholder="Ingrese su usuario" required>
 
         <label>Contraseña</label>
-        <input type="password" name="password" placeholder="Ingrese su contraseña">
+        <input type="password" name="password" placeholder="Ingrese su contraseña" required>
 
-        <div class="radio-option">
-          <input type="radio" id="guest" name="modo">
-          <label for="guest">Continuar sin loguearme</label>
+        <!-- Registrarse -->
+        <div class="extra-option">
+          <a href="components/registro-page/registro.html" id="registerLink">Aún no tengo cuenta</a>
         </div>
 
         <button type="submit" class="next-btn">Siguiente ➜</button>

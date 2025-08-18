@@ -83,8 +83,3 @@ tagInputField.addEventListener("keydown", (e) => {
 function getTags() {
   return tags.map(t => ({ nombre: t })); // formato para tu DTO
 }
-
-//HTTP POST (crear usuario) -> localhost8080/crear user&contraseña USUARIODTO JSON
-//HTTP POST (login usuario) -> localhost8080/login user&contraseña USUARIODTO JSON
-//200 ok -> JWT
-//GET/POST/PUT USUARIO

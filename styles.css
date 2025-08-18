@@ -77,17 +77,16 @@ nav {
 /* Hero con imagen */
 .hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 300px;
   overflow: hidden;
 }
 
 .hero img {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: none;
 }
 
 /* Texto centrado sobre la imagen */
@@ -113,12 +112,6 @@ nav {
 }
 
 /* === HEADER LANDING === */
-header {
-  padding: 4rem 2rem 3rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .intro-section {
   max-width: 900px;
   margin: 40px auto;
@@ -265,20 +258,37 @@ input[type="password"] {
   outline: none;
 }
 
-.radio-option {
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #777;
+/* === LINK "Aún no tengo cuenta" === */
+.extra-option {
+  margin-top: 15px;
+  text-align: center;
 }
 
+.extra-option a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #7a42c2;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.extra-option a:hover {
+  color: #4b1c82;
+  background-color: rgba(122, 66, 194, 0.08);
+  transform: translateY(-1px);
+}
+
+/*BOTON SIGUIENTE*/
 .next-btn {
   background-color: #ddd;
   color: #555;
   border: none;
   border-radius: 20px;
   padding: 10px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
@@ -319,10 +329,6 @@ footer p {
 
   .hero-text h2 {
     font-size: 1.2rem;
-  }
-
-  header {
-    padding: 3rem 1.5rem 2rem;
   }
 
   .intro-paragraph {

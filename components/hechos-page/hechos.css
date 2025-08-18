@@ -23,57 +23,59 @@ h2 {
    BARRA DE NAVEGACION
 ============================= */
 
+/* === NAVBAR === */
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
 }
 
 .header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.header-left h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
 }
 
-/* =============================
-   BOTONES GENERALES
-============================= */
+.logo:hover {
+  text-decoration: underline;
+}
 
 .buttons {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .btn {
-    background: #f5f6f7;
-    border: 1px solid #d9dde2;
-    border-radius: 8px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-     text-decoration: none; /* Quita el subrayado */
-    display: inline-block;/* Asegura que se comporte como botón */
-    color: inherit;/* Mantiene el mismo color del texto que el resto de los botones */
+  background: #f5f6f7;
+  border: 1px solid #d9dde2;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
 }
 
 .btn:hover {
-    background: #ffffff;
+  background: #ffffff;
 }
 
 /* =============================
@@ -269,20 +271,37 @@ input[type="password"] {
   outline: none;
 }
 
-.radio-option {
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #777;
+/* === LINK "Aún no tengo cuenta" === */
+.extra-option {
+  margin-top: 15px;
+  text-align: center;
 }
 
+.extra-option a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #7a42c2;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.extra-option a:hover {
+  color: #4b1c82;
+  background-color: rgba(122, 66, 194, 0.08);
+  transform: translateY(-1px);
+}
+
+/*BOTON SIGUIENTE*/
 .next-btn {
   background-color: #ddd;
   color: #555;
   border: none;
   border-radius: 20px;
   padding: 10px;
+  margin-top: 20px;
   cursor: pointer;
 }
 

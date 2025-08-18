@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>MetaMapa - Coleccion</title>
+  <link rel="icon" type="image/png" href="images/metamapa-icon.png">
   <link rel="stylesheet" href="hechos.css">
 </head>
 
@@ -12,9 +13,9 @@
   <!-- Barra de Navegacion -->
   <nav>
     <div class="header-left">
-      <a href="index.html" class="logo">MetaMapa</a>
+      <a href="../../index.html" class="logo">MetaMapa</a>
       <div class="buttons">
-        <button class="btn" onclick="location.href='colecciones.html'">🗺️ Colecciones</button>
+        <button class="btn" onclick="location.href='../colecciones-page/colecciones.html'">🗺️ Colecciones</button>
         <!-- Botón para crear hecho -->
         <button id="openHechoModal" class="btn">📋 Cargar Hecho</button>
       </div>
@@ -26,7 +27,6 @@
   <div class="grid">
 
     <!-- Card de Hecho -->
-
     <div class="card">
       <h3>Inundación en La Plata</h3>
       <p class="descripcion">Fuertes lluvias provocaron inundaciones en distintos barrios de la ciudad.</p>
@@ -106,7 +106,7 @@
 
   <!-- Footer -->
   <footer>
-    <a href="acerca.html" class="footer-link">Información legal y privacidad</a>
+    <a href="../acerca-page/acerca.html" class="footer-link">Información legal y privacidad</a>
     <p>© 2025 · <strong>Diseño de Sistemas</strong> - Grupo 5</p>
   </footer>
 
@@ -119,14 +119,14 @@
       </div>
       <form>
         <label>Nombre de usuario</label>
-        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+        <input type="text" name="usuario" placeholder="Ingrese su usuario" required>
 
         <label>Contraseña</label>
-        <input type="password" name="password" placeholder="Ingrese su contraseña">
+        <input type="password" name="password" placeholder="Ingrese su contraseña" required>
 
-        <div class="radio-option">
-          <input type="radio" id="guest" name="modo">
-          <label for="guest">Continuar sin loguearme</label>
+        <!-- Registrarse -->
+        <div class="extra-option">
+          <a href="../registro-page/registro.html" id="registerLink">Aún no tengo cuenta</a>
         </div>
 
         <button type="submit" class="next-btn">Siguiente ➜</button>
@@ -164,7 +164,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="hechos.js"></script>
 </body>
 
 </html>

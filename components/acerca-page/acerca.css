@@ -180,25 +180,42 @@ input[type="password"] {
     outline: none;
 }
 
-.radio-option {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #777;
+/* === LINK "Aún no tengo cuenta" === */
+.extra-option {
+  margin-top: 15px;
+  text-align: center;
 }
 
+.extra-option a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #7a42c2;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.extra-option a:hover {
+  color: #4b1c82;
+  background-color: rgba(122, 66, 194, 0.08);
+  transform: translateY(-1px);
+}
+
+/*BOTON SIGUIENTE*/
 .next-btn {
-    background-color: #ddd;
-    color: #555;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    cursor: pointer;
+  background-color: #ddd;
+  color: #555;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .next-btn:hover {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 /* FOOTER */
