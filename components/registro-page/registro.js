@@ -1,13 +1,14 @@
-document.getElementById('signupForm').addEventListener('submit', function (e) {
+document.getElementById('signupForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
     // Obtener los datos del formulario
     const formData = new FormData(this);
     const userData = {
-        nombre: formData.get('nombre'),
         email: formData.get('email'),
+        nombre: formData.get('nombre'),
         password: formData.get('password'),
-        edad: parseInt(formData.get('edad'))
+        edad: parseInt(formData.get('edad')),
+        rol: "Contribuyente"
     };
 
     // Validaciones básicas
@@ -21,12 +22,31 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
         return;
     }
 
-    //Enviar los datos al backend
-    console.log('Datos del usuario:', userData);
-    alert('¡Cuenta creada exitosamente!');
+    try {
+        // Enviar datos al backend (POST)
+        const response = await fetch("http://localhost:8080/api/dinamica/usuarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        });
 
-    // Redirigir o limpiar el formulario
-    this.reset();
+        if (!response.ok) {
+            throw new Error("Error al crear usuario: " + response.status);
+        }
+
+        const nuevoUsuario = await response.json();
+        console.log("Usuario creado:", nuevoUsuario);
+        alert("¡Cuenta creada exitosamente!");
+
+        // Limpiar el formulario
+        this.reset();
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("No se pudo crear el usuario. Intenta nuevamente.");
+    }
 });
 
 // Mejorar la experiencia del usuario
@@ -40,3 +60,4 @@ inputs.forEach(input => {
         this.parentNode.style.transform = 'scale(1)';
     });
 });
+
