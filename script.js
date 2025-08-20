@@ -37,54 +37,47 @@ function initModal(modalId, openBtnId) {
   });
 }
 
-//La lógica para abrir/cerrar se abstrae.
-//Si mañana se agrega otro modal, solo hay que llamarlo
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-// Inicializar modales
-initModal("loginModal", "openLoginModal");
-initModal("hechoModal", "openHechoModal");
+  // Tomar los datos del formulario
+  const formData = new FormData(this);
+  const loginData = {
+    usuario: formData.get("usuario"),
+    password: formData.get("password")
+  };
 
-//MANEJO DE ETIQUETAS EN EL FORM CARGAR HECHO
-const tagInputContainer = document.getElementById("tagInput");
-const tagInputField = tagInputContainer.querySelector("input");
-let tags = [];
+  try {
+    const response = await fetch("http://localhost:8080/api/dinamica/usuarios/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(loginData)
+    });
 
-function addTag(text) {
-  const tagText = text.trim();
-  if (tagText !== "" && !tags.includes(tagText)) {
-    tags.push(tagText);
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Login exitoso ✅", data);
 
-    const tagEl = document.createElement("span");
-    tagEl.classList.add("tag");
-    tagEl.textContent = tagText;
+      // acá podrías guardar el token/JWT en localStorage si el back lo devuelve
+      // localStorage.setItem("token", data.token);
 
-    const removeBtn = document.createElement("button");
-    removeBtn.type = "button";
-    removeBtn.innerHTML = "&times;";
-    removeBtn.onclick = () => {
-      tags = tags.filter(t => t !== tagText);
-      tagEl.remove();
-    };
+      alert("Login correcto, bienvenido " + data.nombre);
 
-    tagEl.appendChild(removeBtn);
-    tagInputContainer.insertBefore(tagEl, tagInputField);
-  }
-  tagInputField.value = "";
-}
-
-tagInputField.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === "," || e.key === " ") {
-    e.preventDefault();
-    addTag(tagInputField.value);
+      // Cerrar modal
+      document.getElementById("loginModal").style.display = "none";
+      document.body.style.overflow = "";
+    } else {
+      alert("❌ Usuario o contraseña incorrectos");
+    }
+  } catch (error) {
+    console.error("Error en login:", error);
+    alert("Error al intentar conectar con el servidor");
   }
 });
 
-// Para usar en el envío del formulario
-function getTags() {
-  return tags.map(t => ({ nombre: t })); // formato para tu DTO
-}
-
-//HTTP POST (crear usuario) -> localhost8080/crear user&contraseña USUARIODTO JSON
-//HTTP POST (login usuario) -> localhost8080/login user&contraseña USUARIODTO JSON
-//200 ok -> JWT
-//GET/POST/PUT USUARIO
+//La lógica para abrir/cerrar se abstrae.
+//Si mañana se agrega otro modal, solo hay que llamarlo
+// Inicializar modales
+initModal("loginModal", "openLoginModal");

@@ -1,3 +1,37 @@
+// Función para cargar colecciones desde la API
+async function cargarColecciones() {
+  const grid = document.querySelector(".grid");
+  if (!grid) return;
+
+  try {
+    const response = await fetch("http://localhost:8080/api/colecciones");
+    if (!response.ok) throw new Error("Error al obtener colecciones");
+
+    const colecciones = await response.json();
+
+    // Limpiar grid antes de agregar
+    grid.innerHTML = "";
+
+    colecciones.forEach(c => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <h3>${c.titulo}</h3>
+        <p>${c.descripcion}</p>
+        <div class="meta">Algoritmo: ${c.algoritmoConsenso}</div>
+        <button onclick="verColeccion(${c.id})">Ver colección</button>
+      `;
+
+      grid.appendChild(card);
+    });
+  } catch (error) {
+    console.error(error);
+    grid.innerHTML = "<p>No hay colecciones disponibles en este momento :( </p>";
+  }
+}
+
+// Inicializar modal
 function initModal(modalId, openBtnId) {
   const modal = document.getElementById(modalId);
   const openBtn = document.getElementById(openBtnId);
@@ -37,12 +71,11 @@ function initModal(modalId, openBtnId) {
   });
 }
 
-// Inicializar modales
-initModal("loginModal", "openLoginModal");
-
-//ENTRAR A COLECCIONES
+// Redirigir a la colección
 function verColeccion(id) {
-  alert("Entrando a la colección con id: " + id);
-  //aca redirigir a la vista de la coleccion
   window.location.href = "../hechos-page/hechos.html?id=" + id;
 }
+
+// Inicialización
+initModal("loginModal", "openLoginModal");
+cargarColecciones();
