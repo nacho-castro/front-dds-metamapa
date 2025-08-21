@@ -60,8 +60,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       const data = await response.json();
       console.log("Login exitoso ✅", data);
 
-      // acá podrías guardar el token/JWT en localStorage si el back lo devuelve
-      // localStorage.setItem("token", data.token);
+      //guardar el token/JWT o ROL en localStorage si el back lo devuelve
+      if (data.rol) {
+        localStorage.setItem("rol", data.rol);
+      }
+      console.log("Rol: " + localStorage.getItem("rol"));
 
       alert("Login correcto, bienvenido " + data.nombre);
 
@@ -79,5 +82,5 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
 //La lógica para abrir/cerrar se abstrae.
 //Si mañana se agrega otro modal, solo hay que llamarlo
-// Inicializar modales
+//Inicializar modales
 initModal("loginModal", "openLoginModal");

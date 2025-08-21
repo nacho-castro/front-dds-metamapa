@@ -20,6 +20,7 @@
         <div class="buttons">
           <button class="btn">☰ Filtrar</button>
           <button class="btn">🔍 Buscar</button>
+          <button id="openColeccionModal" class="btn">📋 Cargar Coleccion</button>
         </div>
 
       </div>
@@ -58,9 +59,9 @@
       <div class="modal-header">
         <h2>Login</h2>
       </div>
-      <form>
-        <label>Nombre de usuario</label>
-        <input type="text" name="usuario" placeholder="Ingrese su usuario" required>
+      <form id="loginForm">
+        <label>Email de usuario</label>
+        <input type="text" name="usuario" placeholder="Ingrese su email" required>
 
         <label>Contraseña</label>
         <input type="password" name="password" placeholder="Ingrese su contraseña" required>
@@ -71,6 +72,39 @@
         </div>
 
         <button type="submit" class="next-btn">Siguiente ➜</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Cargar Coleccion -->
+  <div id="coleccionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-header">
+        <h2>Cargar Colección</h2>
+      </div>
+      <form id="coleccionForm">
+        <label>Título</label>
+        <input type="text" name="titulo" placeholder="Ingrese título" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" required></textarea>
+
+        <label for="algoritmo">Algoritmo</label>
+        <select name="algoritmo" id="algoritmo" required>
+          <option value="ABSOLUTA">Absoluta</option>
+          <option value="MULTIPLESMENCIONES">Múltiples menciones</option>
+          <option value="MAYORIASIMPLE">Mayoría simple</option>
+          <option value="NOHAYALGORITMO">Sin algoritmo</option>
+        </select>
+
+        <label>Fuentes</label>
+        <div id="fuentesContainer">
+          <!-- agregar dinámicamente los campos de cada fuente -->
+        </div>
+        <button type="button" id="addFuenteBtn">➕ Agregar fuente</button>
+
+        <button type="submit" class="next-btn">Enviar</button>
       </form>
     </div>
   </div>
