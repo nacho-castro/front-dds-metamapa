@@ -20,7 +20,11 @@ async function cargarColecciones() {
         <h3>${c.titulo}</h3>
         <p>${c.descripcion}</p>
         <div class="meta">Algoritmo: ${c.algoritmoConsenso}</div>
-        <button onclick="verColeccion(${c.id})">Ver colección</button>
+         <div class="actions">
+          <button onclick="verColeccion(${c.id})">Ver colección</button>
+          <button class="delete-btn" onclick="eliminarColeccion(${c.id})">🗑️</button>
+           <button onclick="editarColeccion(${c.id})">✏️</button>
+        </div>
       `;
 
       grid.appendChild(card);
@@ -28,6 +32,57 @@ async function cargarColecciones() {
   } catch (error) {
     console.error(error);
     grid.innerHTML = "<p>No hay colecciones disponibles en este momento :( </p>";
+  }
+}
+
+// Eliminar colección por ID
+async function eliminarColeccion(id) {
+  if (!confirm("¿Seguro que deseas eliminar esta colección?")) return;
+
+  try {
+    const response = await fetch(`http://localhost:8081/api/colecciones/${id}`, {
+      method: "DELETE"
+    });
+
+    if (response.ok) {
+      alert("Colección eliminada ✅");
+      cargarColecciones(); // refresca la grilla
+    } else {
+      alert("❌ Error al eliminar la colección");
+    }
+  } catch (error) {
+    console.error("Error eliminando:", error);
+    alert("Error al intentar eliminar la colección");
+  }
+}
+
+//EDITAR COLECCION POR ID
+async function editarColeccion(id) {
+  const nuevoTitulo = prompt("Nuevo título:");
+  const nuevaDescripcion = prompt("Nueva descripción:");
+
+  if (!nuevoTitulo || !nuevaDescripcion) return;
+
+  const data = {
+    titulo: nuevoTitulo,
+    descripcion: nuevaDescripcion,
+  };
+
+  try {
+    const response = await fetch(`http://localhost:8081/api/colecciones/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("Colección actualizada ✅");
+      cargarColecciones();
+    } else {
+      alert("❌ Error al actualizar");
+    }
+  } catch (err) {
+    console.error("Error:", err);
   }
 }
 
@@ -136,12 +191,13 @@ document.getElementById("coleccionForm").addEventListener("submit", async functi
   // Tomar las fuentes
   document.querySelectorAll("#fuentesContainer .fuente-item").forEach(fuenteDiv => {
     const fuente = {
-      tipoFuente: fuenteDiv.querySelector('input[name="tipoFuente"]').value,
+      tipoFuente: fuenteDiv.querySelector('select[name="tipoFuente"]').value,
       path: fuenteDiv.querySelector('input[name="path"]').value,
       pathInfo: fuenteDiv.querySelector('input[name="pathInfo"]').value
     };
     coleccionData.fuentes.push(fuente);
   });
+
 
   console.log("JSON a enviar:", coleccionData);
 
@@ -155,6 +211,7 @@ document.getElementById("coleccionForm").addEventListener("submit", async functi
 
     if (response.ok) {
       alert("Colección creada con éxito ✅");
+      cargarColecciones(); // refresca la grilla
     } else {
       alert("❌ Error al crear la colección");
     }
