@@ -1,4 +1,6 @@
-// Función para cargar colecciones desde la API
+// =========================
+// CARGAR COLECCIONES
+// =========================
 async function cargarColecciones() {
   const grid = document.querySelector(".grid");
   if (!grid) return;
@@ -12,6 +14,8 @@ async function cargarColecciones() {
     // Limpiar grid antes de agregar
     grid.innerHTML = "";
 
+    const rol = localStorage.getItem("rol");
+
     colecciones.forEach(c => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -20,13 +24,33 @@ async function cargarColecciones() {
         <h3>${c.titulo}</h3>
         <p>${c.descripcion}</p>
         <div class="meta">Algoritmo: ${c.algoritmoConsenso}</div>
-         <div class="actions">
-          <button onclick="verColeccion(${c.id})">Ver colección</button>
-          <button class="delete-btn" onclick="eliminarColeccion(${c.id})">🗑️</button>
-           <button onclick="editarColeccion(${c.id})">✏️</button>
-        </div>
       `;
 
+      const actions = document.createElement("div");
+      actions.classList.add("actions");
+
+      // Ver colección (siempre visible)
+      const btnVer = document.createElement("button");
+      btnVer.textContent = "Ver colección";
+      btnVer.addEventListener("click", () => verColeccion(c.id));
+      actions.appendChild(btnVer);
+
+      // Acciones solo si ADMINISTRADOR
+      if (rol === "ADMINISTRADOR") {
+        const btnEliminar = document.createElement("button");
+        btnEliminar.classList.add("delete-btn");
+        btnEliminar.textContent = "🗑️";
+        btnEliminar.addEventListener("click", () => eliminarColeccion(c.id));
+
+        const btnEditar = document.createElement("button");
+        btnEditar.textContent = "✏️";
+        btnEditar.addEventListener("click", () => editarColeccion(c.id));
+
+        actions.appendChild(btnEliminar);
+        actions.appendChild(btnEditar);
+      }
+
+      card.appendChild(actions);
       grid.appendChild(card);
     });
   } catch (error) {
@@ -35,8 +59,16 @@ async function cargarColecciones() {
   }
 }
 
-// Eliminar colección por ID
+// =========================
+// ELIMINAR COLECCIÓN
+// =========================
 async function eliminarColeccion(id) {
+  const rol = localStorage.getItem("rol");
+  if (rol !== "ADMINISTRADOR") {
+    alert("No tenés permisos para eliminar colecciones.");
+    return;
+  }
+
   if (!confirm("¿Seguro que deseas eliminar esta colección?")) return;
 
   try {
@@ -56,8 +88,16 @@ async function eliminarColeccion(id) {
   }
 }
 
-//EDITAR COLECCION POR ID
+// =========================
+// EDITAR COLECCIÓN
+// =========================
 async function editarColeccion(id) {
+  const rol = localStorage.getItem("rol");
+  if (rol !== "ADMINISTRADOR") {
+    alert("No tenés permisos para editar colecciones.");
+    return;
+  }
+
   const nuevoTitulo = prompt("Nuevo título:");
   const nuevaDescripcion = prompt("Nueva descripción:");
 
@@ -86,7 +126,9 @@ async function editarColeccion(id) {
   }
 }
 
-// Inicializar modal
+// =========================
+// MODAL GENÉRICO
+// =========================
 function initModal(modalId, openBtnId) {
   const modal = document.getElementById(modalId);
   const openBtn = document.getElementById(openBtnId);
@@ -126,11 +168,12 @@ function initModal(modalId, openBtnId) {
   });
 }
 
-//VALIDAR LOGIN
+// =========================
+// LOGIN
+// =========================
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  // Tomar los datos del formulario
   const formData = new FormData(this);
   const loginData = {
     usuario: formData.get("usuario"),
@@ -140,9 +183,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   try {
     const response = await fetch("http://localhost:8080/api/dinamica/usuarios/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData)
     });
 
@@ -150,17 +191,19 @@ document.getElementById("loginForm").addEventListener("submit", async function (
       const data = await response.json();
       console.log("Login exitoso ✅", data);
 
-      //guardar el token/JWT o ROL en localStorage si el back lo devuelve
-      if (data.rol) {
-        localStorage.setItem("rol", data.rol);
-      }
-      console.log("Rol: " + localStorage.getItem("rol"));
+      //guardar datos en localStorage
+      localStorage.setItem("rol", data.rol.toUpperCase());
+      localStorage.setItem("nombre", data.nombre);
+      localStorage.setItem("isLogged", "true");
 
       alert("Login correcto, bienvenido " + data.nombre);
 
       // Cerrar modal
       document.getElementById("loginModal").style.display = "none";
       document.body.style.overflow = "";
+
+      manejarSesion();
+      cargarColecciones();
     } else {
       alert("❌ Usuario o contraseña incorrectos");
     }
@@ -170,14 +213,60 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   }
 });
 
-// Redirigir a la colección
+// =========================
+// LOGOUT
+// =========================
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.clear();
+  alert("Sesión cerrada ✅");
+  manejarSesion();
+  cargarColecciones();
+});
+
+// =========================
+// MANEJO DE SESIÓN
+// =========================
+function manejarSesion() {
+  const rol = localStorage.getItem("rol");
+  const isLogged = localStorage.getItem("isLogged") === "true";
+
+  const btnLogin = document.getElementById("openLoginModal");
+  const btnLogout = document.getElementById("logoutBtn");
+  const btnCargarColeccion = document.getElementById("openColeccionModal");
+
+  // ocultar todo por defecto
+  if (btnLogin) btnLogin.style.display = "inline-block";
+  if (btnLogout) btnLogout.style.display = "none";
+  if (btnCargarColeccion) btnCargarColeccion.style.display = "none";
+
+  if (isLogged) {
+    if (btnLogin) btnLogin.style.display = "none";
+    if (btnLogout) btnLogout.style.display = "inline-block";
+
+    if (rol === "ADMINISTRADOR" && btnCargarColeccion) {
+      btnCargarColeccion.style.display = "inline-block";
+    }
+  }
+}
+
+// =========================
+// VER COLECCIÓN
+// =========================
 function verColeccion(id) {
   window.location.href = "../hechos-page/hechos.html?id=" + id;
 }
 
-//FORM CARGAR COLECCION
+// =========================
+// FORM CREAR COLECCIÓN
+// =========================
 document.getElementById("coleccionForm").addEventListener("submit", async function (e) {
   e.preventDefault();
+
+  const rol = localStorage.getItem("rol");
+  if (rol !== "ADMINISTRADOR") {
+    alert("No tenés permisos para crear colecciones.");
+    return;
+  }
 
   const formData = new FormData(this);
 
@@ -198,10 +287,8 @@ document.getElementById("coleccionForm").addEventListener("submit", async functi
     coleccionData.fuentes.push(fuente);
   });
 
-
   console.log("JSON a enviar:", coleccionData);
 
-  // Enviar al backend
   try {
     const response = await fetch("http://localhost:8081/api/colecciones", {
       method: "POST",
@@ -211,7 +298,7 @@ document.getElementById("coleccionForm").addEventListener("submit", async functi
 
     if (response.ok) {
       alert("Colección creada con éxito ✅");
-      cargarColecciones(); // refresca la grilla
+      cargarColecciones();
     } else {
       alert("❌ Error al crear la colección");
     }
@@ -220,8 +307,9 @@ document.getElementById("coleccionForm").addEventListener("submit", async functi
   }
 });
 
-
-//CARGAR FUENTES EN MODAL
+// =========================
+// CARGAR FUENTES EN FORM
+// =========================
 document.getElementById("addFuenteBtn").addEventListener("click", () => {
   const container = document.getElementById("fuentesContainer");
 
@@ -257,13 +345,17 @@ document.getElementById("addFuenteBtn").addEventListener("click", () => {
 
   container.appendChild(fuenteDiv);
 
-  // Evento para eliminar una fuente
   fuenteDiv.querySelector(".removeFuenteBtn").addEventListener("click", () => {
     container.removeChild(fuenteDiv);
   });
 });
 
-// Inicialización
+// =========================
+// INICIO
+// =========================
 initModal("loginModal", "openLoginModal");
 initModal("coleccionModal", "openColeccionModal");
-cargarColecciones();
+window.addEventListener("DOMContentLoaded", () => {
+  manejarSesion();
+  cargarColecciones();
+});

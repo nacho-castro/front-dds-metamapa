@@ -1,15 +1,21 @@
-function initModal(modalId, openBtnId) {
+function initModal(modalId, openBtnId, rolesPermitidos = []) {
   const modal = document.getElementById(modalId);
   const openBtn = document.getElementById(openBtnId);
-  if (!modal || !openBtn) return; // si no existe, no hace nada
+  if (!modal || !openBtn) return;
 
   const closeBtn = modal.querySelector(".close");
   const modalContent = modal.querySelector(".modal-content");
 
-  // Abrir
+  // Abrir (solo si el rol está permitido)
   openBtn.addEventListener("click", () => {
+    const rol = localStorage.getItem("rol");
+    if (rolesPermitidos.length > 0 && !rolesPermitidos.includes(rol)) {
+      alert("No tenés permisos para acceder a esta función.");
+      return;
+    }
+
     modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // evita scroll de fondo
+    document.body.style.overflow = "hidden";
   });
 
   // Cerrar con la X
@@ -20,7 +26,7 @@ function initModal(modalId, openBtnId) {
     });
   }
 
-  // Cerrar clic fuera del contenido
+  // Cerrar clic fuera
   modal.addEventListener("mousedown", (e) => {
     if (!modalContent.contains(e.target)) {
       modal.style.display = "none";
@@ -37,14 +43,32 @@ function initModal(modalId, openBtnId) {
   });
 }
 
-//La lógica para abrir/cerrar se abstrae.
-//Si mañana se agrega otro modal, solo hay que llamarlo
+// =========================
+// MANEJO DE SESIÓN HECHOS
+// =========================
+function manejarSesionHechos() {
+  const rol = localStorage.getItem("rol");
+  const isLogged = localStorage.getItem("isLogged") === "true";
 
-// Inicializar modales
+  const btnCargarHecho = document.getElementById("openHechoModal");
+
+  if (btnCargarHecho) {
+    btnCargarHecho.style.display = "none"; // ocultar por defecto
+    if (isLogged && (rol === "ADMINISTRADOR" || rol === "CONTRIBUYENTE")) {
+      btnCargarHecho.style.display = "inline-block"; // mostrar solo a roles válidos
+    }
+  }
+}
+
+// =========================
+// INICIALIZAR MODALES
+// =========================
 initModal("loginModal", "openLoginModal");
-initModal("hechoModal", "openHechoModal");
+initModal("hechoModal", "openHechoModal", ["ADMINISTRADOR", "CONTRIBUYENTE"]);
 
-//MANEJO DE ETIQUETAS EN EL FORM CARGAR HECHO
+// =========================
+// MANEJO DE ETIQUETAS
+// =========================
 const tagInputContainer = document.getElementById("tagInput");
 const tagInputField = tagInputContainer.querySelector("input");
 let tags = [];
@@ -83,3 +107,11 @@ tagInputField.addEventListener("keydown", (e) => {
 function getTags() {
   return tags.map(t => ({ nombre: t })); // formato para tu DTO
 }
+
+// =========================
+// INICIO
+// =========================
+window.addEventListener("DOMContentLoaded", () => {
+  manejarSesionHechos();
+});
+

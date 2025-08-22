@@ -1,3 +1,6 @@
+// ----------------------
+// Inicialización de modales
+// ----------------------
 function initModal(modalId, openBtnId) {
   const modal = document.getElementById(modalId);
   const openBtn = document.getElementById(openBtnId);
@@ -37,38 +40,41 @@ function initModal(modalId, openBtnId) {
   });
 }
 
+// ----------------------
+// Login
+// ----------------------
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  // Tomar los datos del formulario
   const formData = new FormData(this);
   const loginData = {
     usuario: formData.get("usuario"),
-    password: formData.get("password")
+    password: formData.get("password"),
   };
 
   try {
     const response = await fetch("http://localhost:8080/api/dinamica/usuarios/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginData)
+      body: JSON.stringify(loginData),
     });
 
     if (response.ok) {
       const data = await response.json();
       console.log("Login exitoso ✅", data);
 
-      //guardar el token/JWT o ROL en localStorage si el back lo devuelve
-      if (data.rol) {
-        localStorage.setItem("rol", data.rol);
-      }
-      console.log("Rol: " + localStorage.getItem("rol"));
+      // guardar en localStorage
+      if (data.rol) localStorage.setItem("rol", data.rol);
+      if (data.token) localStorage.setItem("token", data.token);
 
       alert("Login correcto, bienvenido " + data.nombre);
 
-      // Cerrar modal
+      // actualizar UI
+      actualizarUI();
+
+      // cerrar modal
       document.getElementById("loginModal").style.display = "none";
       document.body.style.overflow = "";
     } else {
@@ -80,7 +86,45 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   }
 });
 
+// ----------------------
+// Logout
+// ----------------------
+document.getElementById("logoutBtn").addEventListener("click", function () {
+  localStorage.removeItem("rol");
+  localStorage.removeItem("token");
+
+  alert("Sesión cerrada correctamente 🚪");
+  actualizarUI();
+});
+
+// ----------------------
+// Actualizar UI según login/logout
+// ----------------------
+function actualizarUI() {
+  const rol = localStorage.getItem("rol");
+  const token = localStorage.getItem("token");
+
+  const loginBtn = document.getElementById("openLoginModal");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (rol && token) {
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "inline-block";
+  } else {
+    loginBtn.style.display = "inline-block";
+    logoutBtn.style.display = "none";
+  }
+}
+
+// ----------------------
+// Inicialización
+// ----------------------
+document.addEventListener("DOMContentLoaded", () => {
+  initModal("loginModal", "openLoginModal");
+  actualizarUI();
+});
+
 //La lógica para abrir/cerrar se abstrae.
 //Si mañana se agrega otro modal, solo hay que llamarlo
 //Inicializar modales
-initModal("loginModal", "openLoginModal");
+
